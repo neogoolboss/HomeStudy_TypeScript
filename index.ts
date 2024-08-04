@@ -56,13 +56,14 @@ function 함수2(numberX2? :number) :void { // 파라미터가 옵션일 경우�
 console.log(함수2(3));
 
 // 퀴즈
-// function 함수3(x :number | string) :void {
-    // if( typeof(x) === number) {
-
-    // }
-    // console.log(x + 3);
-// }
-// 함수3(2);
+function 함수3(x :number | string) :void {  // Type 이 하나로 확정되지 않아았을 경우 Type Narrowing
+    if( typeof x === 'number') {            // Narrowing 으로 판정해주는 문법들
+        console.log(x + 3);                 // typeof 변수
+    } else {                                // 속성명 in 오브젝트자료
+        console.log(x + '1')                // 인스턴스 instanceof 부모   
+    }                                       // 아니면 assertion 문법(타입 덮어쓰기) x as number;
+}                                           // 1. Narrowing 할때 쓰기 2. 무슨 타입이 들어올지 100% 확실할 때 사용
+함수3(2);
 
 // 숙제 1
 function Hello(name? :string) :void {
