@@ -119,3 +119,71 @@ function 결혼가능하냐(월소득 :number, 집보유여부 :boolean, 매력�
 
 console.log(결혼가능하냐(700, false, '중'));
 console.log(결혼가능하냐(100, false, '상'));
+
+type Animal = string | number | undefined;
+let 동물 :Animal;                           //type alias
+
+type AnimalType = { name :string, age : number};
+let 동물2 :AnimalType = { name :'kim', age : 21};
+
+const 출생지역 = { region : 'seoul'}        // const 변수는 등호로 재할당만 막아줌, object 수정은 자유롭게 가능.
+출생지역.region = 'busan';
+
+type GrilFriendType = {
+    readonly name : string,          // 읽기 전용 (수정 안됨) // 타입스크립트는 컴파일에러만 발생시킬 뿐 자바스크립트에서는 실행됨.
+    age? : number
+}
+const 여친:GrilFriendType = {
+    name : '전소민'
+}
+
+// 여친.name = '송지효'
+
+type Name = string;
+type Age = number;
+type Person = Name | Age;
+
+type PositionX = { x : number};
+type PositionY = { y : number};
+type positionXY = PositionX & PositionY;    // & 연산자로 object extend 하기
+
+let position :positionXY = { x : 20, y : 30};
+// 같은 이름의 type 변수 재정의 불가능.
+
+// 숙제 1
+type Type1 = { color? : string }
+type Type2 = { size : number }
+type Type3 = { readonly position : number[]}
+type FinalType = Type1 & Type2 & Type3;
+
+let test = {
+    color : 'red',
+    size : 10,
+    position : [10, 20],
+}
+
+// 숙제 2
+type Type4 = {
+    name : string, phone : number, email : string
+}
+
+let test2 :Type4 = {
+    name : 'kim',
+    phone : 123,
+    email : 'abc@naver.com'
+}
+
+// 숙제 3
+type Type5 = {
+    name : string, 
+    phone : number,
+    email : string,
+    adult : boolean,
+}
+
+let test3 :Type5 ={
+    name : 'kim',
+    phone : 123,
+    email : 'abc@naver.com',
+    adult : true,
+}
