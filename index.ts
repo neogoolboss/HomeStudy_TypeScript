@@ -187,3 +187,46 @@ let test3 :Type5 ={
     email : 'abc@naver.com',
     adult : true,
 }
+
+// 더 엄격한 타입 지정 가능 Literal types
+let typeName: 123;
+// typeName = 456;
+
+let Me: '대머리' | '솔로';
+Me = '대머리';
+
+function 가위바위보(a : '가위' | '바위' | '보') :string[]{
+    return [a];
+}
+
+console.log(가위바위보('가위'));
+
+// const 변수의 한계
+// Literal type은 const 변수와 유사하게 사용 가능 *자료를 여러개 저장할 수 있는 const 변수라고 생각하기
+
+// Literal type의 문제점
+
+var 자료 = {
+    name : 'kim'
+} as const // 1. 이 object는 literal type 지정을 알아서 해주세요. 2. object 속성들에 모두 readonly 붙여줌
+
+function 내함수(a : 'kim') { // kim 이라는 타입만 들어올 수 있습니다.
+
+}
+
+// 내함수(자료.name);   // 자료.name의 타입은 string
+
+type 함수타입 = (a : string) => number;
+
+let 함수4 :함수타입 = function () { // 함수표현식에서만 사용 가능.
+    return 0;
+}
+
+let 회원정보 = {
+    name : 'kim',
+    plusOne(a: number) :number {
+        return a + 1
+    }
+}
+
+회원정보.plusOne(1);
