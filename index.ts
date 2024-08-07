@@ -222,11 +222,58 @@ let 함수4 :함수타입 = function () { // 함수표현식에서만 사용 가
     return 0;
 }
 
-let 회원정보 = {
+type MemberInfo = {
+    name : string,
+    age : number,
+    plusOne : (a :number) => number,
+    changeName : () => void
+}
+
+let 회원정보 :MemberInfo = {
     name : 'kim',
-    plusOne(a: number) :number {
+    age : 30,
+    plusOne(a) {
         return a + 1
+    },
+    changeName : () => {
+        console.log('안녕')
     }
 }
 
 회원정보.plusOne(1);
+회원정보.changeName();
+
+
+// callBack 함수
+
+// function 함수5(abc) {
+//     abc()
+// }
+
+// function 함수6() {
+
+// }
+
+// 함수5(함수6);
+
+type CutType = (x :string) => string
+
+let cutZero :CutType = function (x){
+    let result = x.replace(/^0+/, "");
+    return result
+}
+function removeDash(x :string) :number{
+    let result = x.replace(/-/g, "");
+    return parseFloat(result)
+}
+
+type 함수타입1 = (a :string) => string;
+type 함수타입2 = (a : string) => number;
+
+function 만들함수(phoneNumber :string, cutZero :함수타입1, removeDash :함수타입2) {
+    let result = cutZero(phoneNumber);
+    let result2 = removeDash(result);
+    console.log(result2);
+}
+
+만들함수('010-1111-2222', cutZero, removeDash);
