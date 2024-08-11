@@ -4,6 +4,10 @@ function 기계(q, w) {
 }
 var nunu = new 기계('consume', 'snowball');
 var garen = new 기계('strike', 'courage');
+
+기계.prototype.name = 'kim';
+
+var 어레이 = [4, 2, 1];
 // var nunu = {
 //     q : 'consume',
 //     w : 'snowball',
